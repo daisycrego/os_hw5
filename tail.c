@@ -234,5 +234,5 @@ main(int argc, char *argv[])
       close(fd);
     }
   }
-  exit(0);
+  exit();
 }
