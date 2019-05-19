@@ -17,12 +17,10 @@
   allocation is used. In all other cases (e.g. file input), dynamic memory
   allocation is not used.
  */
-
 #include "types.h"
 #include "user.h"
 
 #define DEFAULT_LINES 10
-char buf[512];
 
 /* Doubles the capacity of inArr. Returns a pointer to the new array, outArr.*/
 char*
@@ -47,7 +45,7 @@ printArr(char* arr, int size){
 }
 
 /* Reads final lines of file descriptor, whether file or stdin */
-int
+void
 tail(int fd, int lines, char *name)
 {
   if (fd == 0){ //reading stdin
@@ -109,7 +107,6 @@ tail(int fd, int lines, char *name)
       free(recentLines[i]);
     }
   }
-  return 0;
 }
 
 /*
