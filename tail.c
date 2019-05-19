@@ -73,7 +73,7 @@ tail(int fd, int lines, char *name)
     free(dynamicBuf);
     return;
   }
-
+//
   else{ //reading a file
     int currentLineNumber = 0;
     char temp;
