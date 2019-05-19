@@ -104,13 +104,13 @@ tail(int fd, int lines, char *name)
           bufCap *= 2;
         }
       }
-
+    }
     for (i = 0; i < lines; i++){
       printArr(recentLines[i], sizeof(recentLines[i]));
       free(recentLines[i]);
     }
+  }
 }
-// free all dynamic buffers! be careful about arrays!
 
 /*
 Return values:
@@ -230,7 +230,6 @@ main(int argc, char *argv[])
       }
       tail(fd, lines, argv[i]);
       close(fd);
-    }
   }
   exit();
 }
