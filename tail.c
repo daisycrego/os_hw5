@@ -47,7 +47,7 @@ printArr(char* arr, int size){
 }
 
 /* Reads final lines of file descriptor, whether file or stdin */
-void
+int
 tail(int fd, int lines, char *name)
 {
   if (fd == 0){ //reading stdin
@@ -71,7 +71,6 @@ tail(int fd, int lines, char *name)
       }
     }
     free(dynamicBuf);
-    return;
   }
 //
   else{ //reading a file
@@ -110,6 +109,7 @@ tail(int fd, int lines, char *name)
       free(recentLines[i]);
     }
   }
+  return 0;
 }
 
 /*
