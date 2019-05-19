@@ -230,6 +230,6 @@ main(int argc, char *argv[])
       }
       tail(fd, lines, argv[i]);
       close(fd);
+      exit();
   }
-  exit();
 }
