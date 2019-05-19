@@ -49,6 +49,7 @@ void
 tail(int fd, int lines, char *name)
 {
   int currentLineNumber = 0;
+  int i;
   int n;
   char temp;
   int initializeBufCap = 512;
