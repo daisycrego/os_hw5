@@ -220,7 +220,7 @@ int main(int argc, char *argv[])
       }
       head(fd, lines, argv[i]);
       close(fd);
-      exit(); 
+      exit();
     }
   }
 }
