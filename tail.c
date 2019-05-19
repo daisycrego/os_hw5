@@ -53,18 +53,18 @@ tail(int fd, int lines, char *name)
   if (fd == 0){ //reading stdin
     int l = 0;
     int n;
-    char temp;
+    char temp1;
     int bufCap = 512;
     int bufSize = 0;
     char* dynamicBuf = malloc(bufCap);
-    while((l < lines) && ((n = read(fd, &temp, 1)) > 0)){
-      dynamicBuf[bufSize] = temp;
+    while((l < lines) && ((n = read(fd, &temp1, 1)) > 0)){
+      dynamicBuf[bufSize] = temp1;
       bufSize++;
       if (bufSize == bufCap){
         dynamicBuf = doubleSize(dynamicBuf, bufSize);
         bufCap *= 2;
       }
-      if (temp == '\n'){
+      if (temp1 == '\n'){
         l++;
         printArr(dynamicBuf, bufSize);
         bufSize = 0;
@@ -76,7 +76,7 @@ tail(int fd, int lines, char *name)
 //
   else{ //reading a file
     int currentLineNumber = 0;
-    char temp;
+    char temp2;
     int initializeBufCap = 512;
     int bufCap = 512;
     int bufSize = 0;
@@ -86,8 +86,8 @@ tail(int fd, int lines, char *name)
     int i;
 
     //read from fd 1 char at a time
-    while ((n = read(fd, &temp, 1)) > 0){
-      if (temp == "/n"){
+    while ((n = read(fd, &temp2, 1)) > 0){
+      if (temp2 == '\n'){
         if (currentLineNumber > 0)
             free(recentLines[currentLineNumber]);
         recentLines[currentLineNumber%lines] = currentLine;
@@ -97,7 +97,7 @@ tail(int fd, int lines, char *name)
         bufSize = 0;
       }
       else{
-        currentLine[bufSize] = temp;
+        currentLine[bufSize] = temp2;
         bufSize++;
         if (bufSize == bufCap){
           currentLine = doubleSize(currentLine, bufSize);
@@ -161,7 +161,8 @@ parseOption(char* argToParse, int* lines){
 }
 
 
-int main(int argc, char *argv[])
+int
+main(int argc, char *argv[])
 {
   int lines, line_arg_offset, fd, fn_index, optionUsed;
   line_arg_offset = 0;
