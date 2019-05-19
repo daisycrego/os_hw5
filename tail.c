@@ -83,11 +83,11 @@ tail(int fd, int lines, char *name)
     char* recentLines[lines];
     char* currentLine = malloc(bufCap);
     int n;
+    int i;
 
     //read from fd 1 char at a time
-    while (n = read(fd, &temp, 1) > 0){
-    //  if \n
-      if (currChar == "/n"){
+    while ((n = read(fd, &temp, 1)) > 0){
+      if (temp == "/n"){
         if (currentLineNumber > 0)
             free(recentLines[currentLineNumber]);
         recentLines[currentLineNumber%lines] = currentLine;
@@ -97,7 +97,7 @@ tail(int fd, int lines, char *name)
         bufSize = 0;
       }
       else{
-        currentLine[bufSize] = currChar;
+        currentLine[bufSize] = temp;
         bufSize++;
         if (bufSize == bufCap){
           currentLine = doubleSize(currentLine, bufSize);
@@ -233,5 +233,5 @@ int main(int argc, char *argv[])
       close(fd);
     }
   }
-  exit();
+  exit(0);
 }
