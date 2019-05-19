@@ -159,8 +159,7 @@ parseOption(char* argToParse, int* lines){
   return 4;
 }
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
   int lines, line_arg_offset, fd, fn_index, optionUsed;
   line_arg_offset = 0;
