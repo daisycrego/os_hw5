@@ -109,8 +109,7 @@ tail(int fd, int lines, char *name)
       printArr(recentLines[i], sizeof(recentLines[i]));
       free(recentLines[i]);
     }
-
-  }
+}
 // free all dynamic buffers! be careful about arrays!
 
 /*
@@ -159,7 +158,6 @@ parseOption(char* argToParse, int* lines){
     return 1;
   return 4;
 }
-
 
 int
 main(int argc, char *argv[])
